@@ -73,6 +73,7 @@ previousDragPosition = pixelPos;
 详见`FloodFillScanLineWithStack()`函数
 
 **7、撤销上一步**
+
 用`Stack<Color32[]>`栈实现，就是绘画时记录一下绘画前的像素。撤回时就出栈。
 
 **8、保存**
