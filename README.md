@@ -30,6 +30,7 @@
 只有这样才能进行鼠标点击的射线才能打到图像。
 
 **3、坐标转化，如何获取鼠标点击的图片的哪个像素**
+
 （1）用`Vector3 mouseWorldPosition =  Camera.main.ScreenToWorldPoint(Input.mousePosition)`将鼠标坐标转化为世界坐标.其中`Input.mousePosition`屏幕坐标的起点位置 左下角为(0,0)点，右上角为(Screen.width，Screen.height) 。`mouseWorldPosition`的z轴为摄像机的z轴位置。
 
 （2）再用`Vector2 localPos = transform.InverseTransformPoint(mouseWorldPosition);`将世界坐标转化为图片的本地坐标位置，z轴直接不要。`transformA.InverseTransformPoint(transformB.position)`就是获取transfromB相对于transformA的局部坐标。
