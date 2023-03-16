@@ -8,8 +8,6 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/348bc32268704f4c8a5d9ef8a2ab004a.gif)
 
-# 项目地址
-
 # 关键讲解
 **1、图片的设置**
 为了让图片可以编辑，在图片的Inspector窗口要把这两个地方改一下
