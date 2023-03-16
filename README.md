@@ -43,9 +43,11 @@ Vector2 pixel_pos = new Vector2(Mathf.RoundToInt(centeredX), Mathf.RoundToInt(ce
 ```
 
 **4、获取图片像素**
+
 核心是用`currentColorArray = drawableTexture2D.GetPixels32();`获取图像的每个点像素值，这个`GetPixels32()`方法会返回`Color32[]`的数组，如果图像是(512,512)大小，那么这是数组的大小就为512×512。数组第0个元素为图片左下角的像素，第512×512个元素为图片右上角的像素。这就是为什么我们在3中要进行坐标转化的原因，因为要一一对应。
 
 **5、涂鸦**
+
 在3中知道鼠标点击的是哪个像素点，4中又知道了图像的所有点像素值，找到对应点更改`Color32[]`数组中的颜色即可，改完了记得设置回图片。
 ```csharp
 drawableTexture2D.SetPixels32(currentColorArray);
@@ -67,6 +69,7 @@ for (float lerp = 0; lerp <= 1; lerp += steps)
 previousDragPosition = pixelPos;
 ```
 **6、一键填充**
+
 用到基于栈的非递归泛洪填充算法，不要用的递归去做因为unity会报栈溢出。
 泛洪填充算法详见[https://blog.csdn.net/jia20003/article/details/8908464/](https://blog.csdn.net/jia20003/article/details/8908464/) 
 主要是栈来存储一个点周围可能要填充的点(进栈)。在循环里一直进栈一个点周围要填充的点，然后出栈要填充的点，再判断出栈点周围的点是否进栈。
@@ -77,6 +80,7 @@ previousDragPosition = pixelPos;
 用`Stack<Color32[]>`栈实现，就是绘画时记录一下绘画前的像素。撤回时就出栈。
 
 **8、保存**
+
 ```csharp
 byte[] bytes = drawableTexture2D.EncodeToPNG();
 File.WriteAllBytes(Application.dataPath + "/SavedScreen.png", bytes);
